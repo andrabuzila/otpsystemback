@@ -61,5 +61,25 @@ namespace otpsystemback.Controllers
             return BadRequest("Sorry, your email or password is incorrect.");
         }
 
+        [HttpGet("GetId/{email}")]
+        public IActionResult GetUserId([FromRoute] string email)
+        {
+            if (this.userValidator.CheckIfEmailExist(email))
+            {
+                var userId = this.userService.GetUserId(email);
+                if(userId != null)
+                {
+                    return Ok(userId);
+                }
+            }
+            return BadRequest("Something went wrong while retrieving your id");
+        }
+
+        [HttpGet("VerifyUserAlreadyRegistered/{userId}")]
+        public IActionResult verifyUserRegistered([FromRoute] int userId)
+        {
+            return Ok();
+        }
+
     }
 }

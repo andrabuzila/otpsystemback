@@ -8,6 +8,7 @@ namespace otpsystemback.Interfaces
         string GeneratePass();
         string GenerateToken(string password);
         void AddUser(UserRegisterModel registeredUser);
+        int GetUserId(string email);
         IActionResult verifyUser(string email, string password);
         IActionResult GetUserToken(string email);
     }

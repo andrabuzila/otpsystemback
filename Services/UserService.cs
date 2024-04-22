@@ -87,6 +87,11 @@ namespace otpsystemback.Services
             return new BadRequestObjectResult("Sorry, your email or password is incorrect.");
         }
 
+        public int GetUserId(string email)
+        {
+            return userRepository.Get().First(x => x.Email == email).Id;
+        }
+
         private string getHashedPassword(User user, string password)
         {
             return BCrypt.Net.BCrypt.HashPassword(password, user.Salt);
