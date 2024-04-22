@@ -22,8 +22,11 @@ namespace otpsystemback.Controllers
         public IActionResult GeneratePass()
         {
             string password = this.userService.GeneratePass();
-            if(password != null)
-                return Ok(new { password, DateTime.Now });
+            if (password != null)
+            {
+                string passToken = this.userService.GenerateToken(password);
+                return Ok(new { passToken, DateTime.Now });
+            }
             return BadRequest("Error generating password");
         }
 

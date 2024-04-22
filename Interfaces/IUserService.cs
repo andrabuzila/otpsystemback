@@ -6,6 +6,7 @@ namespace otpsystemback.Interfaces
     public interface IUserService
     {
         string GeneratePass();
+        string GenerateToken(string password);
         void AddUser(UserRegisterModel registeredUser);
         IActionResult verifyUser(string email, string password);
         IActionResult GetUserToken(string email);

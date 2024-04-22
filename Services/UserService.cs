@@ -26,7 +26,12 @@ namespace otpsystemback.Services
             int length = r.Next(8, 20);
             int numberOfNonAlphanumericCharacters = r.Next(1, 4);
             string password = this.Generate(length, numberOfNonAlphanumericCharacters);
+            return password;
             
+        }
+
+        public string GenerateToken(string password)
+        {
             var Token = JwtHelpers.JwtHelpers.GetTokenKey(new UserToken()
             {
                 Password = password,
