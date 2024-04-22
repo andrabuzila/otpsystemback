@@ -16,7 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddEndpointsApiExplorer();
-// Add services to the container.
+
 
 builder.Services.AddAuthentication().AddIdentityServerJwt();
 builder.Services.AddAuthorization();
@@ -25,7 +25,7 @@ builder.Services.AddJWTTokenServices(builder.Configuration);
 
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => {
     options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
@@ -71,7 +71,6 @@ builder.Services.AddScoped<IRegisterUserModelToEntity, RegisterUserModelToEntity
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
